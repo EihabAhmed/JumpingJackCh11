@@ -58,6 +58,11 @@ public class LevelScreen extends BaseScreen {
             MapProperties props = obj.getProperties();
             new Flag((float)props.get("x"), (float)props.get("y"), mainStage);
         }
+
+        for (MapObject obj : tma.getTileList("Coin")) {
+            MapProperties props = obj.getProperties();
+            new Coin((float)props.get("x"), (float)props.get("y"), mainStage);
+        }
     }
 
     @Override
@@ -73,6 +78,14 @@ public class LevelScreen extends BaseScreen {
                 messageLabel.setVisible(true);
                 jack.remove();
                 gameOver = true;
+            }
+        }
+
+        for (BaseActor coin : BaseActor.getList(mainStage, "com.mygdx.jumpingjackch11.Coin")) {
+            if (jack.overlaps(coin)) {
+                coins++;
+                coinLabel.setText("Coins: " + coins);
+                coin.remove();
             }
         }
 
