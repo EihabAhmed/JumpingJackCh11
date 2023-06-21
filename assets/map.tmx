@@ -7,39 +7,39 @@
   <image source="object-tileset.png" width="224" height="32"/>
   <tile id="0">
    <properties>
-    <property name="name" value="Coin"/>
+    <property name="Name" value="Coin"/>
    </properties>
   </tile>
   <tile id="1">
    <properties>
-    <property name="name" value="Flag"/>
+    <property name="Name" value="Flag"/>
    </properties>
   </tile>
   <tile id="2">
    <properties>
-    <property name="name" value="Timer"/>
+    <property name="Name" value="Timer"/>
    </properties>
   </tile>
   <tile id="3">
    <properties>
-    <property name="name" value="Springboard"/>
+    <property name="Name" value="Springboard"/>
    </properties>
   </tile>
   <tile id="4">
    <properties>
-    <property name="name" value="Platform"/>
+    <property name="Name" value="Platform"/>
    </properties>
   </tile>
   <tile id="5">
    <properties>
     <property name="color" value="red"/>
-    <property name="name" value="Key"/>
+    <property name="Name" value="Key"/>
    </properties>
   </tile>
   <tile id="6">
    <properties>
     <property name="color" value="red"/>
-    <property name="name" value="Lock"/>
+    <property name="Name" value="Lock"/>
    </properties>
   </tile>
  </tileset>
