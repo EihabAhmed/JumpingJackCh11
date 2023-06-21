@@ -63,6 +63,11 @@ public class LevelScreen extends BaseScreen {
             MapProperties props = obj.getProperties();
             new Coin((float)props.get("x"), (float)props.get("y"), mainStage);
         }
+
+        for (MapObject obj : tma.getTileList("Timer")) {
+            MapProperties props = obj.getProperties();
+            new Timer((float)props.get("x"), (float)props.get("y"), mainStage);
+        }
     }
 
     @Override
@@ -103,6 +108,24 @@ public class LevelScreen extends BaseScreen {
                         jack.velocityVec.y = 0;
                 }
             }
+        }
+
+        time -= dt;
+        timeLabel.setText("Time: " + (int)time);
+
+        for (BaseActor timer : BaseActor.getList(mainStage, "com.mygdx.jumpingjackch11.Timer")) {
+            if (jack.overlaps(timer)) {
+                time += 20;
+                timer.remove();
+            }
+        }
+
+        if (time < 0) {
+            messageLabel.setText("Time Up - Game Over");
+            messageLabel.setColor(Color.RED);
+            messageLabel.setVisible(true);
+            jack.remove();
+            gameOver = true;
         }
     }
 
