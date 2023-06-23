@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.StretchViewport;
 
 public class LevelScreen extends BaseScreen {
 
@@ -72,6 +71,13 @@ public class LevelScreen extends BaseScreen {
             MapProperties props = obj.getProperties();
             new Timer((float)props.get("x"), (float)props.get("y"), mainStage);
         }
+
+        for (MapObject obj : tma.getTileList("Springboard")) {
+            MapProperties props = obj.getProperties();
+            new Springboard((float)props.get("x"), (float)props.get("y"), mainStage);
+        }
+
+        jack.toFront();
     }
 
     @Override
@@ -111,6 +117,12 @@ public class LevelScreen extends BaseScreen {
                     else // collided in Y direction
                         jack.velocityVec.y = 0;
                 }
+            }
+        }
+
+        for (BaseActor springboard : BaseActor.getList(mainStage, "com.mygdx.jumpingjackch11.Springboard")) {
+            if (jack.belowOverlaps(springboard) && jack.isFalling()) {
+                jack.spring();
             }
         }
 

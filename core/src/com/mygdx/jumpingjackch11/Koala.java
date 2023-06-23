@@ -125,4 +125,12 @@ public class Koala extends BaseActor {
     public void jump() {
         velocityVec.y = jumpSpeed;
     }
+
+    public boolean isFalling() {
+        return (velocityVec.y < 0);
+    }
+
+    public void spring() {
+        velocityVec.y = 1.5f * jumpSpeed;
+    }
 }
