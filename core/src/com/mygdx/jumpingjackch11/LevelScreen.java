@@ -7,6 +7,8 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.StretchViewport;
 
 public class LevelScreen extends BaseScreen {
 
@@ -22,6 +24,8 @@ public class LevelScreen extends BaseScreen {
 
     @Override
     public void initialize() {
+        fitViewport = new FitViewport(800, 640);
+
         camera.setToOrtho(false, 800, 640);
 
         TilemapActor tma = new TilemapActor("map.tmx", mainStage);

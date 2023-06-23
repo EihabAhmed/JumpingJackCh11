@@ -11,6 +11,8 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent.Type;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.StretchViewport;
 
 public abstract class BaseScreen implements Screen, InputProcessor {
     protected Stage mainStage;
@@ -19,6 +21,7 @@ public abstract class BaseScreen implements Screen, InputProcessor {
     protected Table uiTable;
 
     OrthographicCamera camera;
+    FitViewport fitViewport;
 
     public BaseScreen() {
         mainStage = new Stage();
@@ -46,13 +49,17 @@ public abstract class BaseScreen implements Screen, InputProcessor {
 
         ScreenUtils.clear(0, 0, 0, 1);
 
-        camera.update();
+        fitViewport.apply();
+
+//        camera.update();
         mainStage.getViewport().setCamera(camera);
 //        uiStage.getViewport().setCamera(camera);
 
         mainStage.draw();
         uiStage.draw();
     }
+
+
 
     @Override
     public void show() {
@@ -64,7 +71,7 @@ public abstract class BaseScreen implements Screen, InputProcessor {
 
     @Override
     public void resize(int width, int height) {
-
+        fitViewport.update(width, height);
     }
 
     @Override
