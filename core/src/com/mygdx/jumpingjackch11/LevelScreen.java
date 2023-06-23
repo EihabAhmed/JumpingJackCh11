@@ -136,7 +136,7 @@ public class LevelScreen extends BaseScreen {
     @Override
     public boolean keyDown(int keycode) {
         if (keycode == Keys.SPACE) {
-            if (jack.isOnSolid()) {
+            if (jack.getStage() != null && jack.isOnSolid()) {
                 jack.jump();
             }
         }
